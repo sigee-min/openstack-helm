@@ -69,11 +69,11 @@ ssh-keygen -b 2048 -t rsa -N '' -f ~/.ssh/octavia_ssh_key
 openstack keypair create --public-key ~/.ssh/octavia_ssh_key.pub octavia_ssh_key
 
 # Create amphora image from file. Default is https://tarballs.openstack.org/octavia/test-images/
-if [ "$OSH_AMPHORA_IMAGE_FILE_PATH" == "" ]; then
-  curl https://tarballs.openstack.org/octavia/test-images/test-only-amphora-x64-haproxy-ubuntu-xenial.qcow2 \
-  -o /tmp/test-only-amphora-x64-haproxy-ubuntu-xenial.qcow2
+if [ "$OSH_AMPHORA_IMAGE_FILE_PATH" == "" ]; then  
+  curl https://tarballs.opendev.org/openstack/octavia/test-images/test-only-amphora-x64-haproxy-ubuntu-focal.qcow2 \
+  -o /tmp/test-only-amphora-x64-haproxy-ubuntu-focal.qcow2   
 
-  OSH_AMPHORA_IMAGE_FILE_PATH=/tmp/test-only-amphora-x64-haproxy-ubuntu-xenial.qcow2
+  OSH_AMPHORA_IMAGE_FILE_PATH=/tmp/test-only-amphora-x64-haproxy-ubuntu-focal.qcow2
 fi
 
 OSH_AMPHORA_IMAGE_ID=$(openstack image create -f value -c id \
